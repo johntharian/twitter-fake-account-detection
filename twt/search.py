@@ -18,10 +18,10 @@ def twt(name):
     favourites_count=[] 	
     listed_count 	=[]
 
-    consumer_key="JPpiXxTbFOk3EKjNMxpMIFsAZ"
-    consumer_secret="nhsHsTl4v7lYwScZwPfZLz85QITaNASY2evoZwDujmRhs5GI9q"
-    access_token="1054754166588014592-wBBya1iu4OnpErV35sVjKM51HJle9T"
-    access_token_secret="Mwr5itle2lWItwwnAeqorFkrkkWicowh46JWdkxoIM9eT"
+    consumer_key=""
+    consumer_secret=""
+    access_token=""
+    access_token_secret=""
 
     auth = OAuthHandler(consumer_key, consumer_secret)
     auth.set_access_token(access_token, access_token_secret)
