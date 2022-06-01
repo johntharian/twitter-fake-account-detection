@@ -1,14 +1,9 @@
-from tensorflow.keras import Sequential
-from tensorflow.keras.layers import Dense,Activation
 import datetime
 import numpy as np
+from tensorflow.keras import Sequential
+from tensorflow.keras.layers import Dense,Activation
+from pickle import load
 
-def get_input():
-    account=[]
-
-    account.append(input("enter name"))
-
-    return account
 
 def process(data):
 
@@ -30,14 +25,8 @@ def process(data):
 
     data.replace([np.inf,-np.inf],0,inplace=True)
 
-# data['active']=data['active']*1000
-
-# data['active']=data['active'].astype(int)
-
-# data['fr_c_by_fo_c']=data['fr_c_by_fo_c']*1000
-
-# data['fr_c_by_fo_c']=data['fr_c_by_fo_c'].astype(int)
-
+    scaler = load(open('scaler.pkl', 'rb'))
+    data = scaler.transform(data)
 
     return data
 
@@ -63,7 +52,13 @@ def predict(data):
     model.load_weights('weights')
     
     pred=model.predict(data)
+    p=[]
+    for i in pred:
+        if i <0.5:
+            p.append(1)
+        else:
+            p.append(0)
 
-    return pred
+    return p[0]
 
 
